@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Sample WebExtension",
+  "name": "Honeyed Filo Pastries",
   "version": "0.0.0",
 
   "icons": {
@@ -9,9 +9,9 @@
     "48": "assets/icons/favicon-48.png",
     "128": "assets/icons/favicon-128.png"
   },
-  "description": "Sample description",
+  "description": "Replaces mentions of balaclava/balaklava (and common misspellings) with baklava.",
   "homepage_url": "https://github.com/abhijithvijayan/web-extension-starter",
-  "short_name": "Sample Name",
+  "short_name": "Honeyed Filo",
 
   "permissions": [
     "activeTab",
@@ -48,7 +48,7 @@
       "48": "assets/icons/favicon-48.png",
       "128": "assets/icons/favicon-128.png"
     },
-    "default_title": "tiny title"
+    "default_title": "Honeyed Filo Pastries"
   },
 
   "options_ui": {

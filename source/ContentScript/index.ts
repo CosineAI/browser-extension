@@ -1,10 +1,10 @@
 /**
- * Replace mentions of "balaklava" or "balaclava" with "baklava" (plurals included) on the page.
+ * Replace mentions of "balaklava"/"balaclava" (including common misspellings) with "baklava"
+ * on the page. Supports plurals and possessives (e.g., balaclava's, balaclavas').
  * - Preserves common casing styles: lowercase, UPPERCASE, Capitalized.
  * - Skips editable fields and non-visible/script/style areas.
  */
-
-const WORD_REGEX = /\b(balaklava|balaclava)(s)?\b/gi;
+const WORD_REGEX = /\b(balaklava|balaclava|balakava|balaclva|balacalava)(s)?((?:['’]s)|(?:['’]))?\b/gi;
 const REPLACEMENT_BASE = 'baklava';
 
 const EXCLUDED_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'CODE', 'PRE']);
@@ -56,7 +56,11 @@ function replaceInTextNode(node: Text): void {
 
   const replaced = original.replace(WORD_REGEX, (match, ...args: unknown[]) => {
     const plural = args[1] as string | undefined;
-    const replacementFull = REPLACEMENT_BASE + (plural ? 's' : '');
+    const possessive = args[2] as string | undefined; // "'s" or "'" (after plural)
+    let replacementFull = REPLACEMENT_BASE + (plural ? 's' : '');
+    if (possessive) {
+      replacementFull += possessive;
+    }
     return applyCasing(match, replacementFull);
   });
 
