@@ -54,7 +54,8 @@ function replaceInTextNode(node: Text): void {
   const original = node.nodeValue;
   if (!original) return;
 
-  const replaced = original.replace(WORD_REGEX, (match, base: string, plural: string | undefined) => {
+  const replaced = original.replace(WORD_REGEX, (match, ...args: unknown[]) => {
+    const plural = args[1] as string | undefined;
     const replacementFull = REPLACEMENT_BASE + (plural ? 's' : '');
     return applyCasing(match, replacementFull);
   });
