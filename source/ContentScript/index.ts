@@ -1,10 +1,10 @@
 /**
- * Replace mentions of "balaklava" with "baklava" (plurals included) on the page.
+ * Replace mentions of "balaklava" or "balaclava" with "baklava" (plurals included) on the page.
  * - Preserves common casing styles: lowercase, UPPERCASE, Capitalized.
  * - Skips editable fields and non-visible/script/style areas.
  */
 
-const WORD_REGEX = /\b(balaklava)(s)?\b/gi;
+const WORD_REGEX = /\b(balaklava|balaclava)(s)?\b/gi;
 const REPLACEMENT_BASE = 'baklava';
 
 const EXCLUDED_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'CODE', 'PRE']);
